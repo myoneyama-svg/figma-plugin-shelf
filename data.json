@@ -222,7 +222,10 @@
   "name": "Refero",
   "order": 6,
   "url": "https://refero.design/",
-  "id": "site-refero"
+  "id": "site-refero",
+  "tags": [
+   "参考"
+  ]
  },
  {
   "createdAt": "2026-11-12T10:00:01.000Z",
