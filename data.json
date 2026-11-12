@@ -273,7 +273,10 @@
   "name": "shadcn/ui（Components）",
   "order": 8,
   "url": "https://ui.shadcn.com/docs/components",
-  "id": "site-shadcn-components"
+  "id": "site-shadcn-components",
+  "tags": [
+   "素材"
+  ]
  },
  {
   "createdAt": "2026-11-12T10:00:03.000Z",
