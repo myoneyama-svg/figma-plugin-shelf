@@ -334,7 +334,10 @@
   "name": "unprinted（アプリデザインギャラリー）",
   "order": 9,
   "url": "https://www.unprinted.design/explore/",
-  "id": "site-unprinted-explore"
+  "id": "site-unprinted-explore",
+  "tags": [
+   "参考"
+  ]
  },
  {
   "createdAt": "2026-11-12T10:00:05.000Z",
