@@ -206,7 +206,10 @@
   "name": "Design Spells",
   "order": 5,
   "url": "https://designspells.com/",
-  "id": "site-designspells"
+  "id": "site-designspells",
+  "tags": [
+   "アニメーション"
+  ]
  },
  {
   "createdAt": "2026-11-12T09:20:02.000Z",
