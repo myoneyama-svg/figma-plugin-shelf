@@ -618,7 +618,7 @@ $('#keyBtn').onclick=()=>{
     '<ol><li><a class="link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHubの鍵を作る画面</a>を開く</li>'+
     '<li><b>Token name</b> に好きな名前、<b>Expiration</b> に有効期間を設定</li>'+
     '<li><b>Repository access</b> で <b>Only select repositories</b> を選び、<code>figma-plugin-shelf</code> を選ぶ</li>'+
-    '<li><b>Permissions</b> の <b>Contents</b> を <b>Read and write</b> にする</li>'+
+    '<li>その下の <b>Permissions</b> で「<b>Add permissions</b>」を押し、一覧から <b>Contents</b> にチェック。追加された Contents の行の右にある「Read-only」を <b>Read and write</b> に切り替える（画面が違う場合は <b>Repository permissions</b> を開き、Contents の「No access」を Read and write に）</li>'+
     '<li><b>Generate token</b> を押し、表示された <code>github_pat_…</code> をコピーして下に貼る</li></ol>'+
     '<div><label class="lbl" for="k-token">鍵（トークン）</label><input type="password" id="k-token" autocomplete="off" spellcheck="false" placeholder="github_pat_…"></div>'+
     '<p class="err" id="k-err" hidden></p>'+
