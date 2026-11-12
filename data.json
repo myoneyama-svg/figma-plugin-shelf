@@ -244,7 +244,10 @@
   "name": "LottieFiles（マイクロインタラクション）",
   "order": 7,
   "url": "https://lottiefiles.com/free-animations/microinteraction",
-  "id": "site-lottie-microinteraction"
+  "id": "site-lottie-microinteraction",
+  "tags": [
+   "アニメーション"
+  ]
  },
  {
   "createdAt": "2026-11-12T10:00:02.000Z",
