@@ -143,7 +143,10 @@
   "name": "Magnific アイコン検索",
   "order": 3,
   "url": "https://www.magnific.com/jp/search?editableStroke=1&format=search&iconType=standard&last_filter=query&last_value=send&query=send&type=icon#uuid=1be6cf64-6762-44ce-94f3-55b46c954dfb",
-  "id": "site-magnific-icons"
+  "id": "site-magnific-icons",
+  "tags": [
+   "素材"
+  ]
  },
  {
   "createdAt": "2026-11-12T09:20:00.000Z",
