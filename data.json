@@ -112,7 +112,10 @@
   "name": "Put! by DezaLink（プロンプト集）",
   "order": 2,
   "url": "https://put.dezalink.com/prompts",
-  "id": "site-dezalink-put"
+  "id": "site-dezalink-put",
+  "tags": [
+   "整理・効率化"
+  ]
  },
  {
   "createdAt": "2026-11-12T07:00:04.000Z",
