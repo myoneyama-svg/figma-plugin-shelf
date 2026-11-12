@@ -188,7 +188,7 @@ const KIND={
   original:{label:'自作プラグイン',name:'プラグイン名',url:'URL',urlPh:'https://...',open:'リンクを開く ↗',copyWhat:'プロンプト',empty:'Figmaエージェントに送ると使えるプラグインのプロンプトを登録できます。',descPh:'例：フレーム名を中のテキストに合わせる',imgHint:'任意。なければプロンプトがサムネイルになります'}
 };
 const TABS=['plugin','original','site'];
-const TAGS=['アニメーション','テキスト','図形・変形','影・質感','カラー','素材','書き出し・変換','整理・効率化','参考'];
+const TAGS=['アニメーション','テキスト','図形・変形','影・質感','カラー','素材','書き出し・変換','整理・効率化','デザイン参考'];
 S.tag=null;
 const kindOf=p=>p.kind==='site'||p.kind==='original'?p.kind:'plugin';
 const tagsOf=p=>Array.isArray(p.tags)?p.tags.filter(t=>typeof t==='string'&&t):[];
