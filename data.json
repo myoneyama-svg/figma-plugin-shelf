@@ -163,7 +163,10 @@
   "name": "before.click",
   "order": 4,
   "url": "https://before.click/",
-  "id": "site-before-click"
+  "id": "site-before-click",
+  "tags": [
+   "参考"
+  ]
  },
  {
   "createdAt": "2026-11-12T10:00:00.000Z",
