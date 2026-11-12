@@ -139,7 +139,12 @@ textarea.descedit{min-height:0;resize:none;font-size:15px;field-sizing:content}
 @media (prefers-reduced-motion:reduce){.card,.grid.ready .card{transition:none}.card:hover{translate:none!important}.sheet,.shade{animation:none}}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0}
-#addBtn{display:none!important}
+#addBtn[hidden],#keyBtn[hidden]{display:none}
+.keysheet ol{margin:0;padding-left:1.3em;line-height:1.8;font-size:14px}
+.keysheet code{font-family:var(--f-mono);font-size:12px;background:var(--bg);padding:1px 5px;border-radius:5px}
+.keysheet input{width:100%}
+.sync{margin-left:8px;color:var(--accent)}
+.sync.err{color:var(--danger)}
 </style>
 </head>
 <body>
@@ -147,8 +152,9 @@ body{margin:0}
   <header>
     <div class="brand">
       <h1>Figma Plugin Shelf</h1>
-      <div class="meta" id="meta">Plugins &amp; References</div>
+      <div class="meta" id="meta">Plugins &amp; References<span class="sync" id="sync"></span></div>
     </div>
+    <button class="btn ghost sm" id="keyBtn" type="button">編集する</button>
     <button class="btn" id="addBtn" type="button" hidden>＋ 追加</button>
     <div class="tabs" role="tablist" aria-label="種類">
       <button class="tab" role="tab" id="tab-plugins" data-group="plugins" aria-selected="true" aria-controls="grid" type="button">プラグイン<span class="n" id="n-plugins">0</span></button>
@@ -162,7 +168,7 @@ body{margin:0}
       <div class="tagbar" id="tagbar" role="group" aria-label="タグで絞り込む"></div>
     </div>
   </header>
-  <p class="hint" id="hint">タップで詳細 ・ <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true" style="vertical-align:-1px"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 3.5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg> で<span id="hint-copy">名前</span>をコピー</p>
+  <p class="hint" id="hint"><span id="hint-tap">タップで詳細</span> ・ <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true" style="vertical-align:-1px"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 3.5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg> で<span id="hint-copy">名前</span>をコピー</p>
   <div class="grid" id="grid">
     <div class="state" id="state"><strong>読み込み中…</strong>保存したプラグインを取り出しています。</div>
   </div>
@@ -222,7 +228,7 @@ function fillCard(el,p){
   if(p.img){
     let img=th.querySelector('img');
     if(!img){th.innerHTML='';img=document.createElement('img');img.alt='';img.draggable=false;img.decoding='async';th.appendChild(img)}
-    if(img.getAttribute('src')!==p.img)img.src=p.img;
+    const src=srcOf(p.img);if(img.getAttribute('src')!==src)img.src=src;
   }else if(kindOf(p)==='original'&&p.prompt){
     th.style.aspectRatio='16/9';
     if(!th.querySelector('.pthumb'))th.innerHTML='<div class="pthumb"><span class="ptag">PROMPT</span><p></p></div>';
@@ -409,7 +415,7 @@ function openDetail(id){
   const p=S.items.find(i=>i.id===id); if(!p)return;
   const url=safeUrl(p.url), K=KIND[kindOf(p)];
   const sh=openSheet(
-    (p.img?'<div class="sheet-img"><img alt="" src="'+esc(p.img)+'"></div>':'')+
+    (p.img?'<div class="sheet-img"><img alt="" src="'+esc(srcOf(p.img))+'"></div>':'')+
     '<div class="sheet-in">'+
       '<div class="sheet-top"><h2 id="d-name"></h2><button class="copy" id="d-copy" type="button" aria-label="'+K.copyWhat+'をコピー" style="margin:2px 0 0">'+COPY_SVG+'</button><button class="x" id="d-x" type="button" aria-label="閉じる">×</button></div>'+
       (S.canWrite
@@ -417,22 +423,25 @@ function openDetail(id){
         :(p.desc?'<p class="lead" id="d-desc"></p>':''))+
       (p.prompt?'<div><div class="lbl">プロンプト<button class="btn accent sm" id="d-pcopy" type="button">コピー</button></div><pre class="prompt" id="d-prompt"></pre></div>':'')+
       (url?'<a class="link" target="_blank" rel="noopener" href="'+esc(url)+'">'+K.open+'</a>':'')+
-      (p.memo?'<div><div class="lbl">メモ</div><pre class="prompt" id="d-memo" style="font-family:inherit;font-size:14px"></pre></div>':'')+
+      (S.canWrite?'<div><label class="lbl" for="d-memo">メモ<span class="saved" id="d-saved"></span></label><textarea id="d-memo" placeholder="使いどころ、コツ、注意点など"></textarea></div>'
+        :(p.memo?'<div><div class="lbl">メモ</div><pre class="prompt" id="d-memo" style="font-family:inherit;font-size:14px"></pre></div>':''))+
       (S.canWrite?'<div class="actions"><button class="btn ghost" id="d-edit" type="button">編集</button><span class="grow"></span><button class="btn ghost" id="d-del" type="button" style="color:var(--danger)">削除</button></div><div id="d-confirm"></div>':'')+
     '</div>');
   sh.querySelector('#d-name').textContent=p.name;
   const descEl=sh.querySelector('#d-desc');
   if(descEl){if(descEl.tagName==='TEXTAREA')descEl.value=p.desc||'';else descEl.textContent=p.desc}
-  const memo=sh.querySelector('#d-memo');if(memo)memo.textContent=p.memo;
+  const memo=sh.querySelector('#d-memo');const memoEdit=memo&&memo.tagName==='TEXTAREA';if(memo){if(memoEdit)memo.value=p.memo||'';else memo.textContent=p.memo}
   sh.querySelector('#d-x').onclick=closeSheet;
   sh.querySelector('#d-copy').onclick=e=>copyText(copyValue(p),e.currentTarget,K.copyWhat);
   if(p.prompt){sh.querySelector('#d-prompt').textContent=p.prompt;
     sh.querySelector('#d-pcopy').onclick=e=>{const b=e.currentTarget;copyText(p.prompt,null,'プロンプト');b.textContent='コピーしました';setTimeout(()=>{b.textContent='コピー'},1400)}}
   let t=null, savedVal=p.memo||'';
-  const save=async()=>{clearTimeout(t);const v=memo.value;if(v===savedVal)return;
+  const save=async()=>{clearTimeout(t);if(!memoEdit)return;const v=memo.value;if(v===savedVal)return;
     try{await S.col.doc(id).update({memo:v});savedVal=v;p.memo=v;const s=document.getElementById('d-saved');if(s)s.textContent='保存しました';render()}
     catch(e){const s=document.getElementById('d-saved');if(s)s.textContent='保存できませんでした'}};
 
+  if(memoEdit){memo.addEventListener('input',()=>{const s=sh.querySelector('#d-saved');s.textContent='入力中…';clearTimeout(t);t=setTimeout(save,700)});
+    memo.addEventListener('blur',save)}
   let dt=null, savedDesc=p.desc||'';
   const saveDesc=async()=>{clearTimeout(dt);if(!descEl||descEl.tagName!=='TEXTAREA')return;const v=descEl.value.replace(/\s*\n\s*/g,' ').trim();if(v===savedDesc)return;
     const s=()=>document.getElementById('d-dsaved');
@@ -444,6 +453,7 @@ function openDetail(id){
     descEl.addEventListener('blur',saveDesc);
   }
   
+  sh._onClose=()=>{save();saveDesc()};
   if(S.canWrite){
     sh.querySelector('#d-edit').onclick=()=>{save();saveDesc();openForm(p)};
     sh.querySelector('#d-del').onclick=()=>{
@@ -483,7 +493,7 @@ function openForm(p){
     '<div class="actions"><span class="grow"></span><button class="btn ghost" type="button" id="f-cancel">キャンセル</button><button class="btn accent" type="submit" id="f-save">'+(isNew?'追加する':'保存する')+'</button></div>'+
   '</form>');
   const $f=s=>sh.querySelector(s);
-  if(p){$f('#f-name').value=p.name||'';$f('#f-desc').value=p.desc||'';$f('#f-url').value=p.url||'';if($f('#f-prompt'))$f('#f-prompt').value=p.prompt||'';if(p.img){$f('#f-prev').src=p.img;$f('#f-prev').hidden=false}}
+  if(p){$f('#f-name').value=p.name||'';$f('#f-desc').value=p.desc||'';$f('#f-url').value=p.url||'';if($f('#f-prompt'))$f('#f-prompt').value=p.prompt||'';if(p.img){$f('#f-prev').src=srcOf(p.img);$f('#f-prev').hidden=false}}
   const picked=new Set(p?tagsOf(p):(S.tag?[S.tag]:[]));
   const allTags=tagOrder([...TAGS,...S.items.flatMap(tagsOf)]);
   $f('#f-tags').replaceChildren(...allTags.map(t=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t;
@@ -528,14 +538,117 @@ function applySnap(snap){
   S.loaded=true;render();
   if(!grid.classList.contains('ready'))requestAnimationFrame(()=>requestAnimationFrame(()=>grid.classList.add('ready')));
 }
+/* ---------- GitHub storage ---------- */
+const GH={owner:'myoneyama-svg',repo:'figma-plugin-shelf',branch:'main',token:null,sha:null};
+const TK='shelf-gh-token', IMG=new Map(), DB=new Map();
+const srcOf=u=>IMG.get(u)||u;
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}
+async function gh(path,opt={},token=GH.token){
+  const r=await fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+path,{method:opt.method||'GET',body:opt.body,cache:'no-store',
+    headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}});
+  if(!r.ok){const e=new Error('GitHub '+r.status);e.status=r.status;throw e}
+  return r.status===204?null:r.json();
+}
+const b64=u8=>{let s='';for(let i=0;i<u8.length;i+=0x8000)s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000));return btoa(s)};
+const unb64=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g,'')),c=>c.charCodeAt(0)));
+const newId=()=>'i'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+async function readRemote(token){
+  const cur=await gh('/contents/data.json?ref='+GH.branch,{},token);
+  return {sha:cur.sha,list:JSON.parse(unb64(cur.content))};
+}
+function snapshot(){return {docs:[...DB.values()].map(v=>({id:v.id,data:()=>{const {id,...r}=v;return r}}))}}
+function changed(){applySnap(snapshot());scheduleSave()}
+const col={
+  doc:id=>({
+    async set(d){DB.set(id,{id,...d});changed()},
+    async update(d){const v=DB.get(id);if(!v)throw new Error('not found');Object.assign(v,d);changed()},
+    async delete(){DB.delete(id);changed()}
+  }),
+  async add(d){const id=newId();DB.set(id,{id,...d});changed();return {id}}
+};
+const assetsGH={async upload(blob){
+  const name='images/'+newId()+'.jpg';
+  await putFile(name,new Uint8Array(await blob.arrayBuffer()),'画像を追加');
+  IMG.set(name,URL.createObjectURL(blob));
+  return {url:name};
+}};
+async function putFile(path,u8,message,sha){
+  const r=await gh('/contents/'+path,{method:'PUT',body:JSON.stringify({message,content:b64(u8),branch:GH.branch,...(sha?{sha}:{})})});
+  return r.content.sha;
+}
+function setSync(t,err){const el=$('#sync');el.textContent=t?'・'+t:'';el.classList.toggle('err',!!err)}
+let saveT=null, saving=false, dirty=false;
+function scheduleSave(){dirty=true;setSync('保存待ち…');clearTimeout(saveT);saveT=setTimeout(flush,800)}
+async function flush(){
+  if(saving||!dirty)return;
+  saving=true;dirty=false;setSync('保存中…');
+  const list=[...DB.values()].map(({_saved,...v})=>v).sort((a,b)=>(a.order??0)-(b.order??0)||String(a.createdAt||'').localeCompare(String(b.createdAt||'')));
+  const u8=new TextEncoder().encode(JSON.stringify(list,null,1)+'\n');
+  try{
+    try{GH.sha=await putFile('data.json',u8,'カードを更新',GH.sha)}
+    catch(e){if(e.status!==409&&e.status!==422)throw e;GH.sha=(await gh('/contents/data.json?ref='+GH.branch)).sha;GH.sha=await putFile('data.json',u8,'カードを更新',GH.sha)}
+    setSync(dirty?'保存待ち…':'保存しました');
+  }catch(e){
+    dirty=true;
+    const msg=e.status===401?'鍵の期限が切れています':e.status===403||e.status===404?'鍵に書き込み権限がありません':'保存できませんでした';
+    setSync(msg,true);toast(msg);
+  }
+  saving=false;
+  if(dirty&&!$('#sync').classList.contains('err'))flush();
+}
+window.addEventListener('beforeunload',e=>{if(dirty||saving){e.preventDefault();e.returnValue=''}});
+
+function applyMode(){
+  $('#addBtn').hidden=!S.canWrite;
+  const k=$('#keyBtn');k.textContent=S.canWrite?'⚙':'編集する';k.setAttribute('aria-label',S.canWrite?'編集の設定':'編集する');
+  $('#hint-tap').textContent=S.canWrite?'タップでメモ ・ 長押しして動かすと並べ替え':'タップで詳細';
+}
+$('#keyBtn').onclick=()=>{
+  if(S.canWrite){
+    const sh=openSheet('<div class="sheet-in keysheet" style="padding-top:20px"><div class="sheet-top"><h2>編集の設定</h2><button class="x" id="k-x" type="button" aria-label="閉じる">×</button></div>'+
+      '<p class="lead">このブラウザでは編集できます。追加・編集した内容はGitHubに保存され、ほかの人の画面には1〜2分で反映されます。</p>'+
+      '<div class="actions"><span class="grow"></span><button class="btn ghost" id="k-out" type="button" style="color:var(--danger)">このブラウザから鍵を消す</button></div></div>');
+    sh.querySelector('#k-x').onclick=closeSheet;
+    sh.querySelector('#k-out').onclick=()=>{lsSet(TK,null);location.reload()};
+    return;
+  }
+  const sh=openSheet('<form class="sheet-in keysheet" id="k" novalidate style="padding-top:20px"><div class="sheet-top"><h2>編集する</h2><button class="x" id="k-x" type="button" aria-label="閉じる">×</button></div>'+
+    '<p class="lead">このページで追加・編集するには、GitHubの鍵（トークン）を一度だけ入力します。鍵はこのブラウザにだけ保存されます。</p>'+
+    '<ol><li><a class="link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHubの鍵を作る画面</a>を開く</li>'+
+    '<li><b>Token name</b> に好きな名前、<b>Expiration</b> に有効期間を設定</li>'+
+    '<li><b>Repository access</b> で <b>Only select repositories</b> を選び、<code>figma-plugin-shelf</code> を選ぶ</li>'+
+    '<li><b>Permissions</b> の <b>Contents</b> を <b>Read and write</b> にする</li>'+
+    '<li><b>Generate token</b> を押し、表示された <code>github_pat_…</code> をコピーして下に貼る</li></ol>'+
+    '<div><label class="lbl" for="k-token">鍵（トークン）</label><input type="password" id="k-token" autocomplete="off" spellcheck="false" placeholder="github_pat_…"></div>'+
+    '<p class="err" id="k-err" hidden></p>'+
+    '<div class="actions"><span class="grow"></span><button class="btn ghost" type="button" id="k-cancel">キャンセル</button><button class="btn accent" type="submit" id="k-save">編集をはじめる</button></div></form>');
+  sh.querySelector('#k-x').onclick=closeSheet;sh.querySelector('#k-cancel').onclick=closeSheet;
+  sh.querySelector('#k-token').focus();
+  sh.querySelector('#k').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const tok=sh.querySelector('#k-token').value.trim(), err=sh.querySelector('#k-err'), btn=sh.querySelector('#k-save');
+    if(!tok){err.textContent='鍵を貼り付けてください。';err.hidden=false;return}
+    btn.disabled=true;btn.textContent='確認中…';err.hidden=true;
+    try{await readRemote(tok);lsSet(TK,tok);location.reload()}
+    catch(e2){err.textContent=e2.status===401?'鍵が正しくないか、期限が切れています。':(e2.status===403||e2.status===404)?'この鍵では figma-plugin-shelf を読めません。Repository access を確認してください。':'確認できませんでした。時間をおいてお試しください。';err.hidden=false;btn.disabled=false;btn.textContent='編集をはじめる'}
+  });
+};
+
 (async()=>{
   const fail=msg=>{S.loaded=false;stateEl.hidden=false;stateEl.innerHTML='<strong>データを読み込めませんでした</strong>'+msg};
+  let list=null;
+  const tok=lsGet(TK);
+  if(tok){
+    try{const r=await readRemote(tok);GH.token=tok;GH.sha=r.sha;list=r.list;S.canWrite=true;S.col=col;S.assets=assetsGH}
+    catch(e){toast(e.status===401?'鍵の期限が切れています。⚙から入れ直してください':'GitHubから読み込めませんでした');if(e.status===401)lsSet(TK,null)}
+  }
   try{
-    const r=await fetch('data.json',{cache:'no-cache'});
-    if(!r.ok)throw new Error(r.status);
-    const list=await r.json();
-    applySnap({docs:list.map(v=>({id:v.id,data:()=>v}))});
-  }catch(e){fail('時間をおいて開き直してください。')}
+    if(!list){const r=await fetch('data.json',{cache:'no-cache'});if(!r.ok)throw new Error(r.status);list=await r.json()}
+  }catch(e){fail('時間をおいて開き直してください。');return}
+  list.forEach(v=>DB.set(v.id,v));
+  applyMode();
+  applySnap(snapshot());
 })();
 </script>
 </body>
