@@ -1,5 +1,22 @@
 [
  {
+  "id": "imweakmepqu8r",
+  "name": "Rico® Supply",
+  "desc": "インタラクション・アニメーションの参考",
+  "url": "https://rico.supply/categories/all",
+  "tags": [
+   "アニメーション",
+   "参考"
+  ],
+  "img": "images/imweakkxko7o7.jpg",
+  "imgW": 900,
+  "imgH": 682,
+  "kind": "site",
+  "memo": "",
+  "order": -1,
+  "createdAt": "2026-11-13T01:22:09.648Z"
+ },
+ {
   "createdAt": "2026-11-12T07:00:02.000Z",
   "desc": "アクセシビリティ基準を必ず満たす配色パレットを生成",
   "img": "images/1574674680092332527.jpg",
@@ -165,7 +182,7 @@
   "url": "https://before.click/",
   "id": "site-before-click",
   "tags": [
-   "デザイン参考"
+   "参考"
   ]
  },
  {
@@ -227,7 +244,7 @@
   "url": "https://refero.design/",
   "id": "site-refero",
   "tags": [
-   "デザイン参考"
+   "参考"
   ]
  },
  {
@@ -339,7 +356,7 @@
   "url": "https://www.unprinted.design/explore/",
   "id": "site-unprinted-explore",
   "tags": [
-   "デザイン参考"
+   "参考"
   ]
  },
  {
