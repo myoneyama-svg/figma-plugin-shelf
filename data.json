@@ -33,6 +33,22 @@
   "createdAt": "2026-11-15T03:30:25.865Z"
  },
  {
+  "id": "imwihg00zecxj",
+  "name": "What Was IT",
+  "desc": "韓国のアプリUI/UXの参考サイト",
+  "url": "https://wwit.design/",
+  "tags": [
+   "参考"
+  ],
+  "img": "images/imwihfyplyzrv.jpg",
+  "imgW": 900,
+  "imgH": 576,
+  "kind": "site",
+  "memo": "",
+  "order": -1,
+  "createdAt": "2026-11-15T23:45:36.035Z"
+ },
+ {
   "createdAt": "2026-11-12T07:00:02.000Z",
   "desc": "アクセシビリティ基準を必ず満たす配色パレットを生成",
   "img": "images/1574674680092332527.jpg",
