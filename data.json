@@ -17,6 +17,20 @@
   "createdAt": "2026-11-13T01:22:09.648Z"
  },
  {
+  "id": "1418382040312723873",
+  "name": "CSS color-mix()",
+  "desc": "選択した2色間のグラデーションを生成できる",
+  "url": "https://www.figma.com/community/plugin/1418382040312723873/css-color-mix",
+  "tags": [],
+  "img": "images/imwha191e6uny.jpg",
+  "imgW": 900,
+  "imgH": 506,
+  "kind": "plugin",
+  "memo": "",
+  "order": -1,
+  "createdAt": "2026-11-15T03:30:25.865Z"
+ },
+ {
   "createdAt": "2026-11-12T07:00:02.000Z",
   "desc": "アクセシビリティ基準を必ず満たす配色パレットを生成",
   "img": "images/1574674680092332527.jpg",
