@@ -1,22 +1,5 @@
 [
  {
-  "id": "1134018716847999330",
-  "name": "Auto Documentation",
-  "desc": "Variablesをコレクションやモード別に整理したドキュメントフレームを生成。",
-  "url": "https://www.figma.com/community/plugin/1134018716847999330/auto-documentation",
-  "tags": [
-   "カラー",
-   "整理・効率化"
-  ],
-  "img": "images/imwha5tezlgrt.jpg",
-  "imgW": 900,
-  "imgH": 507,
-  "kind": "plugin",
-  "memo": "デザインシステム全体を一覧にしたい場合に便利です。",
-  "order": -2,
-  "createdAt": "2026-11-15T03:33:59.145Z"
- },
- {
   "id": "imweakmepqu8r",
   "name": "Rico® Supply",
   "desc": "インタラクション・アニメーションの参考",
