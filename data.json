@@ -21,7 +21,9 @@
   "name": "CSS color-mix()",
   "desc": "選択した2色間のグラデーションを生成できる",
   "url": "https://www.figma.com/community/plugin/1418382040312723873/css-color-mix",
-  "tags": [],
+  "tags": [
+   "カラー"
+  ],
   "img": "images/imwha191e6uny.jpg",
   "imgW": 900,
   "imgH": 506,
