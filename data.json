@@ -1,5 +1,19 @@
 [
  {
+  "id": "1310832673817237972",
+  "name": "Print Variables",
+  "desc": "既存のVariablesから、カラーチップを並べた一覧を自動生成。",
+  "url": "https://www.figma.com/community/plugin/1310832673817237972/print-variables",
+  "tags": [],
+  "img": "images/imwhavsovend5.jpg",
+  "imgW": 900,
+  "imgH": 620,
+  "kind": "plugin",
+  "memo": "変数の説明も表示できる",
+  "order": -2,
+  "createdAt": "2026-11-15T03:54:11.301Z"
+ },
+ {
   "id": "imweakmepqu8r",
   "name": "Rico® Supply",
   "desc": "インタラクション・アニメーションの参考",
