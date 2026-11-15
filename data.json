@@ -17,6 +17,20 @@
   "createdAt": "2026-11-15T03:54:11.301Z"
  },
  {
+  "id": "imwihbaivhjla",
+  "name": "Color Generator",
+  "desc": "",
+  "url": "https://kigen.design/color",
+  "tags": [],
+  "img": "images/imwihb91o76y8.jpg",
+  "imgW": 900,
+  "imgH": 602,
+  "kind": "site",
+  "memo": "",
+  "order": -2,
+  "createdAt": "2026-11-15T23:41:56.359Z"
+ },
+ {
   "id": "imweakmepqu8r",
   "name": "Rico® Supply",
   "desc": "インタラクション・アニメーションの参考",
