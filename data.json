@@ -4,7 +4,10 @@
   "name": "Print Variables",
   "desc": "既存のVariablesから、カラーチップを並べた一覧を自動生成。",
   "url": "https://www.figma.com/community/plugin/1310832673817237972/print-variables",
-  "tags": [],
+  "tags": [
+   "カラー",
+   "整理・効率化"
+  ],
   "img": "images/imwhavsovend5.jpg",
   "imgW": 900,
   "imgH": 620,
