@@ -19,12 +19,14 @@
  {
   "id": "imwihbaivhjla",
   "name": "Color Generator",
-  "desc": "",
+  "desc": "カラージェネレーター",
   "url": "https://kigen.design/color",
-  "tags": [],
-  "img": "images/imwihb91o76y8.jpg",
+  "tags": [
+   "カラー"
+  ],
+  "img": "images/imwihd2mtvzhi.jpg",
   "imgW": 900,
-  "imgH": 602,
+  "imgH": 538,
   "kind": "site",
   "memo": "",
   "order": -2,
