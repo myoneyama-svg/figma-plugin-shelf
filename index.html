@@ -540,7 +540,7 @@ function applySnap(snap){
 }
 /* ---------- GitHub storage ---------- */
 const GH={owner:'myoneyama-svg',repo:'figma-plugin-shelf',branch:'main',token:null,sha:null};
-const TK='shelf-gh-token', IMG=new Map(), DB=new Map();
+const TK='shelf-gh-token', IMG=new Map(), DB=new Map(), DELETED=new Set();
 const srcOf=u=>IMG.get(u)||u;
 function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function lsSet(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}
@@ -563,7 +563,7 @@ const col={
   doc:id=>({
     async set(d){DB.set(id,{id,...d});changed()},
     async update(d){const v=DB.get(id);if(!v)throw new Error('not found');Object.assign(v,d);changed()},
-    async delete(){DB.delete(id);changed()}
+    async delete(){DB.delete(id);DELETED.add(id);changed()}
   }),
   async add(d){const id=newId();DB.set(id,{id,...d});changed();return {id}}
 };
@@ -583,11 +583,16 @@ function scheduleSave(){dirty=true;setSync('保存待ち…');clearTimeout(saveT
 async function flush(){
   if(saving||!dirty)return;
   saving=true;dirty=false;setSync('保存中…');
-  const list=[...DB.values()].map(({_saved,...v})=>v).sort((a,b)=>(a.order??0)-(b.order??0)||String(a.createdAt||'').localeCompare(String(b.createdAt||'')));
-  const u8=new TextEncoder().encode(JSON.stringify(list,null,1)+'\n');
+  const body=()=>{const list=[...DB.values()].map(({_saved,...v})=>v).sort((a,b)=>(a.order??0)-(b.order??0)||String(a.createdAt||'').localeCompare(String(b.createdAt||'')));
+    return new TextEncoder().encode(JSON.stringify(list,null,1)+'\n')};
   try{
-    try{GH.sha=await putFile('data.json',u8,'カードを更新',GH.sha)}
-    catch(e){if(e.status!==409&&e.status!==422)throw e;GH.sha=(await gh('/contents/data.json?ref='+GH.branch)).sha;GH.sha=await putFile('data.json',u8,'カードを更新',GH.sha)}
+    try{GH.sha=await putFile('data.json',body(),'カードを更新',GH.sha)}
+    catch(e){if(e.status!==409&&e.status!==422)throw e;
+      // someone else (e.g. the extension) saved meanwhile: keep their new cards, then save ours on top
+      const r=await readRemote(GH.token);GH.sha=r.sha;let added=0;
+      r.list.forEach(v=>{if(!DB.has(v.id)&&!DELETED.has(v.id)){DB.set(v.id,v);added++}});
+      if(added)applySnap(snapshot());
+      GH.sha=await putFile('data.json',body(),'カードを更新',GH.sha)}
     setSync(dirty?'保存待ち…':'保存しました');
   }catch(e){
     dirty=true;

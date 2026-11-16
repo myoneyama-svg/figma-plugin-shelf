@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Shelfに保存</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<main id="main" hidden>
+  <div class="shot" id="shot"><img id="shot-img" alt=""><span id="shot-none" hidden>画像なし</span></div>
+  <label class="check"><input type="checkbox" id="use-shot" checked> このスクリーンショットをサムネイルにする</label>
+  <div class="seg" id="kind" role="group" aria-label="種類">
+    <button type="button" data-kind="site" aria-pressed="true">参考サイト</button>
+    <button type="button" data-kind="plugin" aria-pressed="false">プラグイン</button>
+  </div>
+  <label class="lbl" for="name">名前</label>
+  <input type="text" id="name" autocomplete="off">
+  <label class="lbl" for="desc">ひとこと説明</label>
+  <input type="text" id="desc" maxlength="80" autocomplete="off" placeholder="どんなことができるか一言で">
+  <label class="lbl" for="url">URL</label>
+  <input type="url" id="url" autocomplete="off">
+  <span class="lbl">タグ</span>
+  <div class="tags" id="tags"></div>
+  <label class="lbl" for="memo">メモ（任意）</label>
+  <textarea id="memo" rows="2"></textarea>
+  <p class="warn" id="dup" hidden></p>
+  <p class="err" id="err" hidden></p>
+  <div class="actions">
+    <a href="#" id="open-shelf" class="sub">Shelfを開く</a>
+    <span class="grow"></span>
+    <button class="btn" id="save" type="button">保存する</button>
+  </div>
+  <a href="#" id="change-key" class="sub tiny">鍵を入れ直す</a>
+</main>
+
+<section id="done" hidden>
+  <p class="big">保存しました</p>
+  <p class="note">Shelfに表示されるまで1〜2分かかることがあります。</p>
+  <div class="actions"><span class="grow"></span><a href="#" id="open-shelf2" class="btn">Shelfを開く</a></div>
+</section>
+
+<form id="setup" hidden>
+  <p class="big">はじめに鍵を入れてください</p>
+  <p class="note">Shelfのページの「編集する」で作った鍵（github_pat_…）と同じものを使えます。鍵はこの拡張機能の中にだけ保存されます。</p>
+  <label class="lbl" for="token">鍵（トークン）</label>
+  <input type="password" id="token" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+  <p class="err" id="setup-err" hidden></p>
+  <div class="actions"><span class="grow"></span><button class="btn" type="submit" id="setup-save">保存</button></div>
+</form>
+<script src="popup.js"></script>
+</body>
+</html>
