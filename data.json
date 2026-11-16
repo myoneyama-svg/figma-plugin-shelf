@@ -33,6 +33,22 @@
   "createdAt": "2026-11-15T03:30:25.865Z"
  },
  {
+  "id": "imwj76xqrtve0",
+  "name": "素材にっぽん",
+  "desc": "日本人素材に特化した素材集",
+  "url": "https://sozai-nippon.com/",
+  "tags": [
+   "素材"
+  ],
+  "img": "images/imwj76wcp3e9o.jpg",
+  "imgW": 900,
+  "imgH": 502,
+  "kind": "site",
+  "memo": "",
+  "order": -1,
+  "createdAt": "2026-11-16T11:46:23.187Z"
+ },
+ {
   "createdAt": "2026-11-12T07:00:02.000Z",
   "desc": "アクセシビリティ基準を必ず満たす配色パレットを生成",
   "img": "images/1574674680092332527.jpg",
