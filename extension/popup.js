@@ -1,6 +1,6 @@
 const OWNER = 'myoneyama-svg', REPO = 'figma-plugin-shelf', BRANCH = 'main';
 const SHELF = 'https://myoneyama-svg.github.io/figma-plugin-shelf/';
-const BASE_TAGS = ['アニメーション','テキスト','図形・変形','影・質感','カラー','素材','書き出し・変換','整理・効率化','デザイン参考','その他参考'];
+const BASE_TAGS = ['アニメーション','テキスト','図形・変形','影・質感','カラー','アイコン','書き出し・変換','整理・効率化','デザイン参考','その他参考'];
 const $ = s => document.querySelector(s);
 const st = { token: null, kind: 'site', tags: new Set(), extraTags: new Set(), remoteTags: [], shot: null, remote: null };
 

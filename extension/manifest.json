@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Shelfに保存",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "今開いているページを Figma Plugin Shelf に保存します",
   "action": {
     "default_popup": "popup.html",
