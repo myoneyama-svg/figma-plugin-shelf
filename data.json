@@ -776,5 +776,21 @@
   ],
   "url": "https://www.figma.com/community/plugin/1234516617110372119",
   "id": "1234516617110372119"
+ },
+ {
+  "id": "imwk7vw6p4bo1",
+  "kind": "site",
+  "name": "Stitch - Design with AI",
+  "desc": "UI画面が作れる。ワイヤー作成に便利",
+  "url": "https://stitch.google.com/?pli=1",
+  "tags": [
+   "整理・効率化"
+  ],
+  "memo": "",
+  "createdAt": "2026-11-17T04:53:31.640Z",
+  "img": "images/imwk7vuk8x8nh.jpg",
+  "imgW": 900,
+  "imgH": 650,
+  "order": -2
  }
 ]
