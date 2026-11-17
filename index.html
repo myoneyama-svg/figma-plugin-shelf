@@ -77,7 +77,7 @@ h1{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,4vw,30px);l
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
 .btn.accent{background:var(--accent);color:var(--accent-ink)}
 .btn.danger{background:var(--danger);color:#fff}
-.btn:focus-visible,.card:focus-visible,.copy:focus-visible,.x:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn:focus-visible,.card:focus-visible,.copy:focus-visible,.more:focus-visible,.x:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 .grid{position:relative;min-height:200px}
 .card{position:absolute;top:0;left:0;background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);overflow:visible;cursor:pointer;
@@ -92,11 +92,13 @@ h1{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,4vw,30px);l
 .thumb .ph{width:100%;height:100%;display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:40px;color:var(--muted)}
 .body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px}
 .row{display:flex;align-items:flex-start;gap:6px}
+.row .copy,.row .more{margin:-4px 0 0}
+.row .more{margin-right:-6px}
 .name{flex:1;min-width:0;margin:0;font-family:var(--f-display);font-weight:700;font-size:15px;line-height:1.3;letter-spacing:-.01em;overflow-wrap:anywhere}
-.copy{flex:none;border:0;background:transparent;color:var(--muted);width:30px;height:30px;margin:-4px -6px 0 0;border-radius:8px;display:grid;place-items:center;cursor:pointer}
-.copy:hover{background:var(--accent-soft);color:var(--accent)}
+.copy,.more{flex:none;border:0;background:transparent;color:var(--muted);width:30px;height:30px;margin:-4px -6px 0 0;border-radius:8px;display:grid;place-items:center;cursor:pointer}
+.copy:hover,.more:hover{background:var(--accent-soft);color:var(--accent)}
 .copy.done{color:var(--accent)}
-.copy svg{width:16px;height:16px}
+.copy svg,.more svg{width:16px;height:16px}
 .desc{margin:0;font-size:12.5px;color:var(--muted);line-height:1.55;overflow-wrap:anywhere}
 .memo-peek{margin:4px 0 0;font-size:12px;padding:6px 8px;border-radius:8px;background:var(--accent-soft);color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 /* Figma-style selection handles while dragging */
@@ -171,7 +173,7 @@ body{margin:0}
       <div class="tagbar" id="tagbar" role="group" aria-label="タグで絞り込む"></div>
     </div>
   </header>
-  <p class="hint" id="hint"><span id="hint-tap">タップで詳細</span> ・ <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true" style="vertical-align:-1px"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 3.5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg> で<span id="hint-copy">名前</span>をコピー</p>
+  <p class="hint" id="hint"><span id="hint-tap">タップでサイトを開く ・ ⋯ で詳細とメモ</span> ・ <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true" style="vertical-align:-1px"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 3.5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg> で<span id="hint-copy">名前</span>をコピー</p>
   <div class="grid" id="grid">
     <div class="state" id="state"><strong>読み込み中…</strong>保存したプラグインを取り出しています。</div>
   </div>
@@ -180,6 +182,7 @@ body{margin:0}
 
 <script>
 const COPY_SVG='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 3.5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+const MORE_SVG='<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="3.5" cy="8" r="1.5" fill="currentColor"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="12.5" cy="8" r="1.5" fill="currentColor"/></svg>';
 const CHECK_SVG='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const $=s=>document.querySelector(s);
 const grid=$('#grid'), stateEl=$('#state');
@@ -218,12 +221,19 @@ function safeUrl(u){try{const x=new URL(u);return /^https?:$/.test(x.protocol)?x
 function makeCard(id){
   const el=document.createElement('article');
   el.className='card';el.dataset.id=id;el.tabIndex=0;
-  el.innerHTML='<div class="thumb"></div><div class="body"><div class="row"><h2 class="name"></h2><button class="copy" type="button" aria-label="コピー">'+COPY_SVG+'</button></div><p class="host" hidden></p><p class="desc"></p><div class="tags" hidden></div><p class="memo-peek" hidden></p></div><i class="hd tl"></i><i class="hd tr"></i><i class="hd bl"></i><i class="hd br"></i><span class="dim"></span>';
+  el.innerHTML='<div class="thumb"></div><div class="body"><div class="row"><h2 class="name"></h2><button class="copy" type="button" aria-label="コピー">'+COPY_SVG+'</button><button class="more" type="button" aria-label="詳細とメモ">'+MORE_SVG+'</button></div><p class="host" hidden></p><p class="desc"></p><div class="tags" hidden></div><p class="memo-peek" hidden></p></div><i class="hd tl"></i><i class="hd tr"></i><i class="hd bl"></i><i class="hd br"></i><span class="dim"></span>';
   el.querySelector('.copy').addEventListener('click',e=>{e.stopPropagation();const p=S.items.find(i=>i.id===id);if(p)copyText(copyValue(p),e.currentTarget,KIND[kindOf(p)].copyWhat)});
   el.addEventListener('pointerdown',onDown);
   el.addEventListener('contextmenu',e=>e.preventDefault());
-  el.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target===el)openDetail(id)});
+  el.querySelector('.more').addEventListener('click',e=>{e.stopPropagation();openDetail(id)});
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target===el)tapCard(id)});
   return el;
+}
+// tap: open the card's site (Figma Community page for plugins); cards without a URL show the detail instead
+function tapCard(id){
+  const p=S.items.find(i=>i.id===id); if(!p)return;
+  const url=safeUrl(p.url);
+  if(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}else openDetail(id);
 }
 function fillCard(el,p){
   const th=el.querySelector('.thumb');
@@ -325,7 +335,7 @@ grid.addEventListener('load',e=>{if(e.target.tagName==='IMG')layout()},true);
 /* ---------- press / long-press drag ---------- */
 const LONG=420, SLOP=8;
 function onDown(e){
-  if(e.button!==0||e.target.closest('.copy'))return;
+  if(e.button!==0||e.target.closest('.copy,.more'))return;
   const el=e.currentTarget, id=el.dataset.id;
   S.press={id,el,x:e.clientX,y:e.clientY,pid:e.pointerId,moved:false,timer:null};
   el.classList.add('pressing');
@@ -340,7 +350,7 @@ window.addEventListener('pointerup',e=>{
   const pr=S.press; if(!pr||e.pointerId!==pr.pid)return;
   clearTimeout(pr.timer);pr.el.classList.remove('pressing');
   if(S.drag)endDrag();
-  else if(!pr.moved)openDetail(pr.id);
+  else if(!pr.moved)tapCard(pr.id);
   S.press=null;
 });
 window.addEventListener('pointercancel',e=>{
@@ -620,7 +630,7 @@ window.addEventListener('beforeunload',e=>{if(dirty||saving){e.preventDefault();
 function applyMode(){
   $('#addBtn').hidden=!S.canWrite;
   const k=$('#keyBtn');k.textContent=S.canWrite?'⚙':'編集する';k.setAttribute('aria-label',S.canWrite?'編集の設定':'編集する');
-  $('#hint-tap').textContent=S.canWrite?'タップでメモ ・ 長押しして動かすと並べ替え':'タップで詳細';
+  $('#hint-tap').textContent=S.canWrite?'タップでサイトを開く ・ ⋯ で詳細とメモ ・ 長押しして動かすと並べ替え':'タップでサイトを開く ・ ⋯ で詳細とメモ';
 }
 $('#keyBtn').onclick=()=>{
   if(S.canWrite){
