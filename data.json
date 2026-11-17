@@ -6,7 +6,7 @@
   "desc": "無料で使えるフラット デザイン アイコン素材配布サイト",
   "url": "http://flat-icon-design.com/?p=410",
   "tags": [
-   "アイコン",
+   "素材",
    "図形・変形",
    "イラスト"
   ],
@@ -24,7 +24,7 @@
   "desc": "美しい写真がダウンロードできる",
   "url": "https://unsplash.com/ja",
   "tags": [
-   "アイコン",
+   "素材",
    "画像"
   ],
   "memo": "自然系の画像が強い印象。アジア人は少なめ？日本の日常的な風景は向いてないかも。",
@@ -41,7 +41,7 @@
   "desc": "フラットなイラストがダウンロードできる",
   "url": "https://undraw.co/illustrations/2",
   "tags": [
-   "アイコン",
+   "素材",
    "イラスト"
   ],
   "memo": "",
@@ -58,7 +58,7 @@
   "desc": "商用フリーのアイコン素材集",
   "url": "https://iconbox.fun/",
   "tags": [
-   "アイコン",
+   "素材",
    "図形・変形"
   ],
   "memo": "パス編集できる",
@@ -123,7 +123,7 @@
   "desc": "日本人素材に特化した素材集",
   "url": "https://sozai-nippon.com/",
   "tags": [
-   "アイコン"
+   "素材"
   ],
   "img": "images/imwj76wcp3e9o.jpg",
   "imgW": 900,
@@ -339,7 +339,7 @@
   "desc": "",
   "url": "https://experience-japan.info/",
   "tags": [
-   "アイコン"
+   "素材"
   ],
   "img": "images/imwdmheoso2x4.jpg",
   "imgW": 900,
@@ -394,7 +394,7 @@
   "url": "https://www.magnific.com/jp/search?editableStroke=1&format=search&iconType=standard&last_filter=query&last_value=send&query=send&type=icon#uuid=1be6cf64-6762-44ce-94f3-55b46c954dfb",
   "id": "site-magnific-icons",
   "tags": [
-   "アイコン"
+   "素材"
   ]
  },
  {
@@ -490,7 +490,7 @@
   "url": "https://refero.design/",
   "id": "site-refero",
   "tags": [
-   "その他参考"
+   "デザイン参考"
   ]
  },
  {
@@ -553,7 +553,7 @@
   "url": "https://ui.shadcn.com/docs/components",
   "id": "site-shadcn-components",
   "tags": [
-   "アイコン"
+   "素材"
   ]
  },
  {
@@ -811,7 +811,7 @@
   "name": "Iconify",
   "order": 27,
   "tags": [
-   "アイコン"
+   "素材"
   ],
   "url": "https://www.figma.com/community/plugin/735098390272716381",
   "id": "735098390272716381"
@@ -827,7 +827,7 @@
   "order": 28,
   "tags": [
    "図形・変形",
-   "アイコン"
+   "素材"
   ],
   "url": "https://www.figma.com/community/plugin/817043359134136295",
   "id": "817043359134136295"
@@ -857,7 +857,7 @@
   "name": "Noto Emoji Picker",
   "order": 30,
   "tags": [
-   "アイコン"
+   "素材"
   ],
   "url": "https://www.figma.com/community/plugin/1234516617110372119",
   "id": "1234516617110372119"
