@@ -54,6 +54,9 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var
 .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
 .tags span{font-size:10.5px;font-weight:500;color:var(--muted);background:var(--bg);border-radius:999px;padding:1px 8px;line-height:1.7}
 .tagpick{display:flex;flex-wrap:wrap;gap:6px}
+.tagadd{font:inherit;font-size:14px;line-height:1;width:22px;height:22px;border:0;border-radius:999px;background:var(--accent);color:var(--accent-ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+.tagnew{display:flex;gap:6px;margin-bottom:8px}
+.tagnew input{flex:1;min-width:0}
 .seg{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
 .seg button{font:inherit;font-weight:700;font-size:13px;border:0;background:none;color:var(--muted);padding:6px 16px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
@@ -188,7 +191,7 @@ const KIND={
   original:{label:'自作プラグイン',name:'プラグイン名',url:'URL',urlPh:'https://...',open:'リンクを開く ↗',copyWhat:'プロンプト',empty:'Figmaエージェントに送ると使えるプラグインのプロンプトを登録できます。',descPh:'例：フレーム名を中のテキストに合わせる',imgHint:'任意。なければプロンプトがサムネイルになります'}
 };
 const TABS=['plugin','original','site'];
-const TAGS=['アニメーション','テキスト','図形・変形','影・質感','カラー','素材','書き出し・変換','整理・効率化','デザイン参考'];
+const TAGS=['アニメーション','テキスト','図形・変形','影・質感','カラー','素材','書き出し・変換','整理・効率化','デザイン参考','その他参考'];
 S.tag=null;
 const kindOf=p=>p.kind==='site'||p.kind==='original'?p.kind:'plugin';
 const tagsOf=p=>Array.isArray(p.tags)?p.tags.filter(t=>typeof t==='string'&&t):[];
@@ -486,7 +489,9 @@ function openForm(p){
     '<div><label class="lbl" for="f-desc">ひとこと説明</label><input type="text" id="f-desc" autocomplete="off" maxlength="80" placeholder="'+K.descPh+'"></div>'+
     (kind==='original'?'<div><label class="lbl" for="f-prompt">プロンプト</label><textarea id="f-prompt" style="font-family:var(--f-mono);font-size:13px;min-height:160px" placeholder="Figmaエージェントに送る文章をそのまま貼り付け"></textarea></div>':'')+
     '<div'+(kind==='original'?' hidden':'')+'><label class="lbl" for="f-url">'+K.url+'</label><input type="url" id="f-url" autocomplete="off" placeholder="'+K.urlPh+'"></div>'+
-    '<div><span class="lbl">タグ</span><div class="tagpick" id="f-tags"></div></div>'+
+    '<div><span class="lbl" style="justify-content:flex-start;gap:8px">タグ<button type="button" class="tagadd" id="f-tagadd" aria-label="タグを追加">＋</button></span>'+
+      '<div class="tagnew" id="f-tagnew" hidden><input type="text" id="f-tagname" maxlength="20" autocomplete="off" placeholder="新しいタグ名"><button type="button" class="btn accent sm" id="f-tagok">追加</button></div>'+
+      '<div class="tagpick" id="f-tags"></div></div>'+
     '<div><span class="lbl">サムネイル画像</span><label class="drop" for="f-file"><img id="f-prev" alt="" hidden><span id="f-drop-t">画像を選ぶ・ドロップ・貼り付け（'+K.imgHint+'）</span></label><input type="file" id="f-file" accept="image/*" hidden></div>'+
     (isNew?'<div><label class="lbl" for="f-memo">メモ（任意）</label><textarea id="f-memo" style="min-height:80px"></textarea></div>':'')+
     '<p class="err" id="f-err" hidden></p>'+
@@ -495,10 +500,16 @@ function openForm(p){
   const $f=s=>sh.querySelector(s);
   if(p){$f('#f-name').value=p.name||'';$f('#f-desc').value=p.desc||'';$f('#f-url').value=p.url||'';if($f('#f-prompt'))$f('#f-prompt').value=p.prompt||'';if(p.img){$f('#f-prev').src=srcOf(p.img);$f('#f-prev').hidden=false}}
   const picked=new Set(p?tagsOf(p):(S.tag?[S.tag]:[]));
-  const allTags=tagOrder([...TAGS,...S.items.flatMap(tagsOf)]);
-  $f('#f-tags').replaceChildren(...allTags.map(t=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t;
-    b.setAttribute('aria-pressed',String(picked.has(t)));
-    b.onclick=()=>{picked.has(t)?picked.delete(t):picked.add(t);b.setAttribute('aria-pressed',String(picked.has(t)))};return b}));
+  const extraTags=new Set();
+  const drawTags=()=>{const allTags=tagOrder([...TAGS,...S.items.flatMap(tagsOf),...extraTags]);
+    $f('#f-tags').replaceChildren(...allTags.map(t=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t;
+      b.setAttribute('aria-pressed',String(picked.has(t)));
+      b.onclick=()=>{picked.has(t)?picked.delete(t):picked.add(t);b.setAttribute('aria-pressed',String(picked.has(t)))};return b}))};
+  drawTags();
+  const addTag=()=>{const t=$f('#f-tagname').value.replace(/\s+/g,' ').trim();if(!t)return;extraTags.add(t);picked.add(t);drawTags();$f('#f-tagname').value='';$f('#f-tagnew').hidden=true};
+  $f('#f-tagadd').onclick=()=>{const n=$f('#f-tagnew');n.hidden=!n.hidden;if(!n.hidden)$f('#f-tagname').focus()};
+  $f('#f-tagok').onclick=addTag;
+  $f('#f-tagname').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();addTag()}else if(e.key==='Escape'){e.stopPropagation();$f('#f-tagnew').hidden=true}});
   let file=null;
   const setFile=f=>{if(!f||!/^image\//.test(f.type))return;file=f;const pv=$f('#f-prev');pv.src=URL.createObjectURL(f);pv.hidden=false;$f('#f-drop-t').textContent=f.name||'貼り付けた画像'};
   $f('#f-file').onchange=e=>setFile(e.target.files[0]);

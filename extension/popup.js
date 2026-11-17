@@ -1,8 +1,8 @@
 const OWNER = 'myoneyama-svg', REPO = 'figma-plugin-shelf', BRANCH = 'main';
 const SHELF = 'https://myoneyama-svg.github.io/figma-plugin-shelf/';
-const BASE_TAGS = ['アニメーション','テキスト','図形・変形','影・質感','カラー','素材','書き出し・変換','整理・効率化','デザイン参考'];
+const BASE_TAGS = ['アニメーション','テキスト','図形・変形','影・質感','カラー','素材','書き出し・変換','整理・効率化','デザイン参考','その他参考'];
 const $ = s => document.querySelector(s);
-const st = { token: null, kind: 'site', tags: new Set(), shot: null, remote: null };
+const st = { token: null, kind: 'site', tags: new Set(), extraTags: new Set(), remoteTags: [], shot: null, remote: null };
 
 /* ---------- GitHub ---------- */
 async function gh(path, opt = {}, token = st.token) {
@@ -47,8 +47,9 @@ function setKind(k) {
   document.querySelectorAll('#kind button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.kind === k)));
   checkDup();
 }
-function renderTags(extra = []) {
-  const all = [...new Set([...BASE_TAGS, ...extra])];
+function renderTags(extra) {
+  if (extra) st.remoteTags = extra;
+  const all = [...new Set([...BASE_TAGS, ...st.remoteTags, ...st.extraTags])];
   $('#tags').replaceChildren(...all.map(t => {
     const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = t;
     b.setAttribute('aria-pressed', String(st.tags.has(t)));
@@ -69,6 +70,11 @@ function cleanTitle(t, kind) {
   if (kind === 'plugin') t = t.replace(/\s*\|\s*Figma.*$/i, '').replace(/^Figma Community\s*[-|]\s*/i, '');
   return t;
 }
+function addTag() {
+  const t = $('#tagname').value.replace(/\s+/g, ' ').trim(); if (!t) return;
+  st.extraTags.add(t); st.tags.add(t); renderTags();
+  $('#tagname').value = ''; $('#tagnew').hidden = true;
+}
 const openShelf = e => { e.preventDefault(); chrome.tabs.create({ url: SHELF }); window.close(); };
 
 async function init() {
@@ -78,6 +84,9 @@ async function init() {
   $('#url').addEventListener('input', checkDup);
   $('#setup').addEventListener('submit', saveToken);
   $('#save').onclick = save;
+  $('#tagadd').onclick = () => { const n = $('#tagnew'); n.hidden = !n.hidden; if (!n.hidden) $('#tagname').focus(); };
+  $('#tagok').onclick = addTag;
+  $('#tagname').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); addTag(); } });
 
   st.token = (await chrome.storage.local.get('token')).token || null;
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });

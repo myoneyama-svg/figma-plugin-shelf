@@ -19,7 +19,8 @@
   <input type="text" id="desc" maxlength="80" autocomplete="off" placeholder="どんなことができるか一言で">
   <label class="lbl" for="url">URL</label>
   <input type="url" id="url" autocomplete="off">
-  <span class="lbl">タグ</span>
+  <span class="lbl tagrow">タグ<button type="button" class="tagadd" id="tagadd" aria-label="タグを追加">＋</button></span>
+  <div class="tagnew" id="tagnew" hidden><input type="text" id="tagname" maxlength="20" autocomplete="off" placeholder="新しいタグ名"><button type="button" class="btn sm" id="tagok">追加</button></div>
   <div class="tags" id="tags"></div>
   <label class="lbl" for="memo">メモ（任意）</label>
   <textarea id="memo" rows="2"></textarea>
