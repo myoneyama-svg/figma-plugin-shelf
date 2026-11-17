@@ -792,5 +792,22 @@
   "imgW": 900,
   "imgH": 650,
   "order": -2
+ },
+ {
+  "id": "imwk7x1zrkhx2",
+  "kind": "site",
+  "name": "無料アイコン素材｜ICON BOX｜商用フリーアイコンがダウンロードできます",
+  "desc": "商用フリーのアイコン素材集",
+  "url": "https://iconbox.fun/",
+  "tags": [
+   "素材",
+   "図形・変形"
+  ],
+  "memo": "パス編集できる",
+  "createdAt": "2026-11-17T04:54:26.288Z",
+  "img": "images/imwk7x0q8o57m.jpg",
+  "imgW": 900,
+  "imgH": 650,
+  "order": -3
  }
 ]
