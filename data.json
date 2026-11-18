@@ -858,5 +858,22 @@
   ],
   "url": "https://www.figma.com/community/plugin/1234516617110372119",
   "id": "1234516617110372119"
+ },
+ {
+  "id": "1525834177360533451",
+  "kind": "plugin",
+  "name": "ToneCurve Color Palette Generator",
+  "desc": "カラーパレット作成できる。リアルタイムで変化が見られる",
+  "url": "https://www.figma.com/community/plugin/1525834177360533451/tonecurve-color-palette-generator",
+  "tags": [
+   "整理・効率化",
+   "カラー"
+  ],
+  "memo": "",
+  "createdAt": "2026-11-18T08:02:54.441Z",
+  "img": "images/imwlu38tlexj9.jpg",
+  "imgW": 900,
+  "imgH": 650,
+  "order": -3
  }
 ]
