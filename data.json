@@ -1,66 +1,17 @@
 [
  {
-  "id": "imwk8bnmcchvn",
-  "kind": "site",
-  "name": "FLAT ICON DESIGN",
-  "desc": "無料で使えるフラット デザイン アイコン素材配布サイト",
-  "url": "http://flat-icon-design.com/?p=410",
+  "id": "1525834177360533451",
+  "kind": "plugin",
+  "name": "ToneCurve Color Palette Generator",
+  "desc": "カラーパレット作成できる。リアルタイムで変化が見られる",
+  "url": "https://www.figma.com/community/plugin/1525834177360533451/tonecurve-color-palette-generator",
   "tags": [
-   "アイコン",
-   "イラスト"
-  ],
-  "memo": "AIデータも",
-  "createdAt": "2026-11-17T05:05:47.214Z",
-  "img": "images/imwk8bm4vd6k8.jpg",
-  "imgW": 900,
-  "imgH": 650,
-  "order": -6
- },
- {
-  "id": "imwk88wlpfa30",
-  "kind": "site",
-  "name": "Unsplash",
-  "desc": "美しい写真がダウンロードできる",
-  "url": "https://unsplash.com/ja",
-  "tags": [
-   "画像"
-  ],
-  "memo": "自然系の画像が強い印象。アジア人は少なめ？日本の日常的な風景は向いてないかも。",
-  "createdAt": "2026-11-17T05:03:38.639Z",
-  "img": "images/imwk8crk9pdrz.jpg",
-  "imgW": 900,
-  "imgH": 644,
-  "order": -5
- },
- {
-  "id": "imwk85wzp20r2",
-  "kind": "site",
-  "name": "Illustrations - Page 2 | unDraw",
-  "desc": "フラットなイラストがダウンロードできる",
-  "url": "https://undraw.co/illustrations/2",
-  "tags": [
-   "アイコン",
-   "イラスト"
+   "整理・効率化",
+   "カラー"
   ],
   "memo": "",
-  "createdAt": "2026-11-17T05:01:19.196Z",
-  "img": "images/imwk85vbxa9nf.jpg",
-  "imgW": 900,
-  "imgH": 650,
-  "order": -4
- },
- {
-  "id": "imwk7x1zrkhx2",
-  "kind": "site",
-  "name": "無料アイコン素材｜ICON BOX｜商用フリーアイコンがダウンロードできます",
-  "desc": "商用フリーのアイコン素材集",
-  "url": "https://iconbox.fun/",
-  "tags": [
-   "アイコン"
-  ],
-  "memo": "パス編集できる",
-  "createdAt": "2026-11-17T04:54:26.288Z",
-  "img": "images/imwk7x0q8o57m.jpg",
+  "createdAt": "2026-11-18T08:02:54.441Z",
+  "img": "images/imwlu38tlexj9.jpg",
   "imgW": 900,
   "imgH": 650,
   "order": -3
@@ -83,22 +34,6 @@
   "createdAt": "2026-11-15T03:54:11.301Z"
  },
  {
-  "id": "imwk7vw6p4bo1",
-  "kind": "site",
-  "name": "Stitch - Design with AI",
-  "desc": "UI画面が作れる。ワイヤー作成に便利",
-  "url": "https://stitch.google.com/?pli=1",
-  "tags": [
-   "整理・効率化"
-  ],
-  "memo": "",
-  "createdAt": "2026-11-17T04:53:31.640Z",
-  "img": "images/imwk7vuk8x8nh.jpg",
-  "imgW": 900,
-  "imgH": 650,
-  "order": -2
- },
- {
   "id": "1418382040312723873",
   "name": "CSS color-mix()",
   "desc": "選択した2色間のグラデーションを生成できる",
@@ -113,22 +48,6 @@
   "memo": "",
   "order": -1,
   "createdAt": "2026-11-15T03:30:25.865Z"
- },
- {
-  "id": "imwj76xqrtve0",
-  "name": "素材にっぽん",
-  "desc": "日本人素材に特化した素材集",
-  "url": "https://sozai-nippon.com/",
-  "tags": [
-   "アイコン"
-  ],
-  "img": "images/imwj76wcp3e9o.jpg",
-  "imgW": 900,
-  "imgH": 502,
-  "kind": "site",
-  "memo": "",
-  "order": -1,
-  "createdAt": "2026-11-16T11:46:23.187Z"
  },
  {
   "createdAt": "2026-11-12T07:00:02.000Z",
@@ -146,20 +65,19 @@
   "id": "1574674680092332527"
  },
  {
-  "createdAt": "2026-11-12T08:00:00.000Z",
-  "desc": "1色から明暗のカラースケールを作れるジェネレーター",
-  "img": "images/site-scale.jpg",
-  "imgH": 450,
-  "imgW": 800,
+  "createdAt": "2026-11-12T08:10:01.000Z",
+  "desc": "線の太さを変えられるアイコン素材を探せる",
+  "img": "images/site-magnific-icons.jpg",
+  "imgH": 225,
+  "imgW": 400,
   "kind": "site",
   "memo": "",
-  "name": "Scale",
+  "name": "Magnific アイコン検索",
   "order": 0,
-  "url": "https://hihayk.github.io/scale/#4/5/55/95/0/0/-0/-0/363636/54/54/54/white",
-  "id": "site-scale",
+  "url": "https://www.magnific.com/jp/search?editableStroke=1&format=search&iconType=standard&last_filter=query&last_value=send&query=send&type=icon#uuid=1be6cf64-6762-44ce-94f3-55b46c954dfb",
+  "id": "site-magnific-icons",
   "tags": [
-   "カラー",
-   "整理・効率化"
+   "アイコン"
   ]
  },
  {
@@ -206,20 +124,20 @@
   "id": "original-wrap-in-frames"
  },
  {
-  "id": "imwihj3vtz80o",
-  "name": "fumfumuUI",
-  "desc": "UIパーツについて学べます",
-  "url": "https://fumufumuui.com/category/ui-parts",
-  "tags": [
-   "その他参考"
-  ],
-  "img": "images/imwihj2ox1urc.jpg",
-  "imgW": 900,
-  "imgH": 631,
+  "id": "imwk88wlpfa30",
   "kind": "site",
-  "memo": "",
-  "order": 1,
-  "createdAt": "2026-11-15T23:48:01.000Z"
+  "name": "Unsplash",
+  "desc": "美しい写真がダウンロードできる",
+  "url": "https://unsplash.com/ja",
+  "tags": [
+   "画像"
+  ],
+  "memo": "自然系の画像が強い印象。アジア人は少なめ？日本の日常的な風景は向いてないかも。",
+  "createdAt": "2026-11-17T05:03:38.639Z",
+  "img": "images/imwk8crk9pdrz.jpg",
+  "imgW": 900,
+  "imgH": 644,
+  "order": 1
  },
  {
   "createdAt": "2026-11-12T07:00:03.000Z",
@@ -237,20 +155,21 @@
   "id": "1405235793385800827"
  },
  {
-  "id": "imwihg00zecxj",
-  "name": "What Was IT",
-  "desc": "韓国のアプリUI/UXの参考サイト",
-  "url": "https://wwit.design/",
-  "tags": [
-   "デザイン参考"
-  ],
-  "img": "images/imwihfyplyzrv.jpg",
-  "imgW": 900,
-  "imgH": 576,
+  "id": "imwk8bnmcchvn",
   "kind": "site",
-  "memo": "",
-  "order": 2,
-  "createdAt": "2026-11-15T23:45:36.035Z"
+  "name": "FLAT ICON DESIGN",
+  "desc": "無料で使えるフラット デザイン アイコン素材配布サイト",
+  "url": "http://flat-icon-design.com/?p=410",
+  "tags": [
+   "アイコン",
+   "イラスト"
+  ],
+  "memo": "AIデータも",
+  "createdAt": "2026-11-17T05:05:47.214Z",
+  "img": "images/imwk8bm4vd6k8.jpg",
+  "imgW": 900,
+  "imgH": 650,
+  "order": 2
  },
  {
   "createdAt": "2026-11-12T07:00:04.000Z",
@@ -268,21 +187,21 @@
   "id": "739208439270091369"
  },
  {
-  "id": "imwihbaivhjla",
-  "name": "Color Generator",
-  "desc": "カラージェネレーター",
-  "url": "https://kigen.design/color",
-  "tags": [
-   "カラー",
-   "整理・効率化"
-  ],
-  "img": "images/imwihd2mtvzhi.jpg",
-  "imgW": 900,
-  "imgH": 538,
+  "id": "imwk85wzp20r2",
   "kind": "site",
+  "name": "Illustrations - Page 2 | unDraw",
+  "desc": "フラットなイラストがダウンロードできる",
+  "url": "https://undraw.co/illustrations/2",
+  "tags": [
+   "アイコン",
+   "イラスト"
+  ],
   "memo": "",
-  "order": 3,
-  "createdAt": "2026-11-15T23:41:56.359Z"
+  "createdAt": "2026-11-17T05:01:19.196Z",
+  "img": "images/imwk85vbxa9nf.jpg",
+  "imgW": 900,
+  "imgH": 650,
+  "order": 3
  },
  {
   "createdAt": "2026-11-12T10:00:00.000Z",
@@ -300,20 +219,20 @@
   "id": "1572154114070473035"
  },
  {
-  "id": "imweakmepqu8r",
-  "name": "Rico® Supply",
-  "desc": "インタラクション・アニメーションの参考",
-  "url": "https://rico.supply/categories/all",
-  "tags": [
-   "アニメーション"
-  ],
-  "img": "images/imweakkxko7o7.jpg",
-  "imgW": 900,
-  "imgH": 682,
+  "id": "imwk7vw6p4bo1",
   "kind": "site",
+  "name": "Stitch - Design with AI",
+  "desc": "UI画面が作れる。ワイヤー作成に便利",
+  "url": "https://stitch.google.com/?pli=1",
+  "tags": [
+   "整理・効率化"
+  ],
   "memo": "",
-  "order": 4,
-  "createdAt": "2026-11-13T01:22:09.648Z"
+  "createdAt": "2026-11-17T04:53:31.640Z",
+  "img": "images/imwk7vuk8x8nh.jpg",
+  "imgW": 900,
+  "imgH": 650,
+  "order": 4
  },
  {
   "createdAt": "2026-11-12T07:00:00.000Z",
@@ -331,34 +250,35 @@
   "id": "809860933081065308"
  },
  {
-  "id": "imwdmhg4u19fl",
-  "name": "EXPERIENCE JAPAN PICTOGRAMS",
-  "desc": "",
-  "url": "https://experience-japan.info/",
+  "id": "imwk7x1zrkhx2",
+  "kind": "site",
+  "name": "無料アイコン素材｜ICON BOX｜商用フリーアイコンがダウンロードできます",
+  "desc": "商用フリーのアイコン素材集",
+  "url": "https://iconbox.fun/",
   "tags": [
    "アイコン"
   ],
-  "img": "images/imwdmheoso2x4.jpg",
+  "memo": "パス編集できる",
+  "createdAt": "2026-11-17T04:54:26.288Z",
+  "img": "images/imwk7x0q8o57m.jpg",
   "imgW": 900,
-  "imgH": 644,
-  "kind": "site",
-  "memo": "",
-  "order": 5,
-  "createdAt": "2026-11-12T14:07:50.766Z"
+  "imgH": 650,
+  "order": 5
  },
  {
-  "createdAt": "2026-11-12T08:10:00.000Z",
-  "desc": "サムネ・広告など用途別に、商用OKの画像生成プロンプトを探せる",
-  "img": "images/site-dezalink-put.jpg",
-  "imgH": 449,
+  "createdAt": "2026-11-12T08:00:00.000Z",
+  "desc": "1色から明暗のカラースケールを作れるジェネレーター",
+  "img": "images/site-scale.jpg",
+  "imgH": 450,
   "imgW": 800,
   "kind": "site",
   "memo": "",
-  "name": "Put! by DezaLink（プロンプト集）",
+  "name": "Scale",
   "order": 6,
-  "url": "https://put.dezalink.com/prompts",
-  "id": "site-dezalink-put",
+  "url": "https://hihayk.github.io/scale/#4/5/55/95/0/0/-0/-0/363636/54/54/54/white",
+  "id": "site-scale",
   "tags": [
+   "カラー",
    "整理・効率化"
   ]
  },
@@ -379,22 +299,6 @@
   "id": "1176149589166146593"
  },
  {
-  "createdAt": "2026-11-12T08:10:01.000Z",
-  "desc": "線の太さを変えられるアイコン素材を探せる",
-  "img": "images/site-magnific-icons.jpg",
-  "imgH": 225,
-  "imgW": 400,
-  "kind": "site",
-  "memo": "",
-  "name": "Magnific アイコン検索",
-  "order": 7,
-  "url": "https://www.magnific.com/jp/search?editableStroke=1&format=search&iconType=standard&last_filter=query&last_value=send&query=send&type=icon#uuid=1be6cf64-6762-44ce-94f3-55b46c954dfb",
-  "id": "site-magnific-icons",
-  "tags": [
-   "アイコン"
-  ]
- },
- {
   "createdAt": "2026-11-12T10:00:02.000Z",
   "desc": "ノイズ入りのきれいなグラデーション背景を自動で作る",
   "img": "images/1174390287006360600.jpg",
@@ -411,20 +315,20 @@
   "id": "1174390287006360600"
  },
  {
-  "createdAt": "2026-11-12T09:20:00.000Z",
-  "desc": "人気アプリのApp Storeストア画像をまとめて見られる",
-  "img": "images/site-before-click.jpg",
-  "imgH": 450,
-  "imgW": 800,
+  "id": "imwihj3vtz80o",
+  "name": "fumfumuUI",
+  "desc": "UIパーツについて学べます",
+  "url": "https://fumufumuui.com/category/ui-parts",
+  "tags": [
+   "その他参考"
+  ],
+  "img": "images/imwihj2ox1urc.jpg",
+  "imgW": 900,
+  "imgH": 631,
   "kind": "site",
   "memo": "",
-  "name": "before.click",
-  "order": 8,
-  "url": "https://before.click/",
-  "id": "site-before-click",
-  "tags": [
-   "デザイン参考"
-  ]
+  "order": 7,
+  "createdAt": "2026-11-15T23:48:01.000Z"
  },
  {
   "createdAt": "2026-11-12T10:00:03.000Z",
@@ -443,20 +347,20 @@
   "id": "1227318898690817659"
  },
  {
-  "createdAt": "2026-11-12T09:20:01.000Z",
-  "desc": "マイクロインタラクションの実例を見られる",
-  "img": "images/site-designspells.jpg",
-  "imgH": 450,
-  "imgW": 800,
+  "id": "imwihg00zecxj",
+  "name": "What Was IT",
+  "desc": "韓国のアプリUI/UXの参考サイト",
+  "url": "https://wwit.design/",
+  "tags": [
+   "デザイン参考"
+  ],
+  "img": "images/imwihfyplyzrv.jpg",
+  "imgW": 900,
+  "imgH": 576,
   "kind": "site",
   "memo": "",
-  "name": "Design Spells",
-  "order": 9,
-  "url": "https://designspells.com/",
-  "id": "site-designspells",
-  "tags": [
-   "アニメーション"
-  ]
+  "order": 8,
+  "createdAt": "2026-11-15T23:45:36.035Z"
  },
  {
   "createdAt": "2026-11-12T10:00:04.000Z",
@@ -475,20 +379,21 @@
   "id": "1511941953946683797"
  },
  {
-  "createdAt": "2026-11-12T09:20:02.000Z",
-  "desc": "実際のWeb・iOSアプリの画面やフローを検索して参考にできる",
-  "img": "images/site-refero.jpg",
-  "imgH": 450,
-  "imgW": 800,
+  "id": "imwihbaivhjla",
+  "name": "Color Generator",
+  "desc": "カラージェネレーター",
+  "url": "https://kigen.design/color",
+  "tags": [
+   "カラー",
+   "整理・効率化"
+  ],
+  "img": "images/imwihd2mtvzhi.jpg",
+  "imgW": 900,
+  "imgH": 538,
   "kind": "site",
   "memo": "",
-  "name": "Refero",
-  "order": 10,
-  "url": "https://refero.design/",
-  "id": "site-refero",
-  "tags": [
-   "デザイン参考"
-  ]
+  "order": 9,
+  "createdAt": "2026-11-15T23:41:56.359Z"
  },
  {
   "createdAt": "2026-11-12T10:00:05.000Z",
@@ -507,20 +412,20 @@
   "id": "1654559690233287297"
  },
  {
-  "createdAt": "2026-11-12T09:40:00.000Z",
-  "desc": "Lottieアニメを探してダウンロードできる",
-  "img": "images/site-lottie-microinteraction.jpg",
-  "imgH": 449,
-  "imgW": 800,
-  "kind": "site",
-  "memo": "",
-  "name": "LottieFiles（マイクロインタラクション）",
-  "order": 11,
-  "url": "https://lottiefiles.com/free-animations/microinteraction",
-  "id": "site-lottie-microinteraction",
+  "id": "imweakmepqu8r",
+  "name": "Rico® Supply",
+  "desc": "インタラクション・アニメーションの参考",
+  "url": "https://rico.supply/categories/all",
   "tags": [
    "アニメーション"
-  ]
+  ],
+  "img": "images/imweakkxko7o7.jpg",
+  "imgW": 900,
+  "imgH": 682,
+  "kind": "site",
+  "memo": "",
+  "order": 10,
+  "createdAt": "2026-11-13T01:22:09.648Z"
  },
  {
   "createdAt": "2026-11-12T11:30:00.000Z",
@@ -538,19 +443,35 @@
   "id": "733343906244951586"
  },
  {
-  "createdAt": "2026-11-12T09:50:00.000Z",
-  "desc": "ボタンやダイアログなど定番UIコンポーネントの見た目と動きを確認できる",
-  "img": "images/site-shadcn-components.jpg",
-  "imgH": 450,
+  "id": "imwj76xqrtve0",
+  "name": "素材にっぽん",
+  "desc": "日本人素材に特化した素材集",
+  "url": "https://sozai-nippon.com/",
+  "tags": [
+   "アイコン"
+  ],
+  "img": "images/imwj76wcp3e9o.jpg",
+  "imgW": 900,
+  "imgH": 502,
+  "kind": "site",
+  "memo": "",
+  "order": 11,
+  "createdAt": "2026-11-16T11:46:23.187Z"
+ },
+ {
+  "createdAt": "2026-11-12T08:10:00.000Z",
+  "desc": "サムネ・広告など用途別に、商用OKの画像生成プロンプトを探せる",
+  "img": "images/site-dezalink-put.jpg",
+  "imgH": 449,
   "imgW": 800,
   "kind": "site",
   "memo": "",
-  "name": "shadcn/ui（Components）",
+  "name": "Put! by DezaLink（プロンプト集）",
   "order": 12,
-  "url": "https://ui.shadcn.com/docs/components",
-  "id": "site-shadcn-components",
+  "url": "https://put.dezalink.com/prompts",
+  "id": "site-dezalink-put",
   "tags": [
-   "その他参考"
+   "整理・効率化"
   ]
  },
  {
@@ -570,22 +491,6 @@
   "id": "1319490058051389789"
  },
  {
-  "createdAt": "2026-11-12T11:00:00.000Z",
-  "desc": "有名アプリのユーザーフローを動画で見られる",
-  "img": "images/site-unprinted-explore.jpg",
-  "imgH": 450,
-  "imgW": 800,
-  "kind": "site",
-  "memo": "",
-  "name": "unprinted（アプリデザインギャラリー）",
-  "order": 13,
-  "url": "https://www.unprinted.design/explore/",
-  "id": "site-unprinted-explore",
-  "tags": [
-   "デザイン参考"
-  ]
- },
- {
   "createdAt": "2026-11-12T11:10:01.000Z",
   "desc": "波線や曲線のパターンをかんたんに作れる",
   "img": "images/745971189153303901.jpg",
@@ -599,6 +504,38 @@
   ],
   "url": "https://www.figma.com/community/plugin/745971189153303901",
   "id": "745971189153303901"
+ },
+ {
+  "id": "imwdmhg4u19fl",
+  "name": "EXPERIENCE JAPAN PICTOGRAMS",
+  "desc": "",
+  "url": "https://experience-japan.info/",
+  "tags": [
+   "アイコン"
+  ],
+  "img": "images/imwdmheoso2x4.jpg",
+  "imgW": 900,
+  "imgH": 644,
+  "kind": "site",
+  "memo": "",
+  "order": 13,
+  "createdAt": "2026-11-12T14:07:50.766Z"
+ },
+ {
+  "createdAt": "2026-11-12T09:20:00.000Z",
+  "desc": "人気アプリのApp Storeストア画像をまとめて見られる",
+  "img": "images/site-before-click.jpg",
+  "imgH": 450,
+  "imgW": 800,
+  "kind": "site",
+  "memo": "",
+  "name": "before.click",
+  "order": 14,
+  "url": "https://before.click/",
+  "id": "site-before-click",
+  "tags": [
+   "デザイン参考"
+  ]
  },
  {
   "createdAt": "2026-11-12T11:10:02.000Z",
@@ -616,6 +553,22 @@
   "id": "958564537441709436"
  },
  {
+  "createdAt": "2026-11-12T09:20:01.000Z",
+  "desc": "マイクロインタラクションの実例を見られる",
+  "img": "images/site-designspells.jpg",
+  "imgH": 450,
+  "imgW": 800,
+  "kind": "site",
+  "memo": "",
+  "name": "Design Spells",
+  "order": 15,
+  "url": "https://designspells.com/",
+  "id": "site-designspells",
+  "tags": [
+   "アニメーション"
+  ]
+ },
+ {
   "createdAt": "2026-11-12T11:10:03.000Z",
   "desc": "図形・テキスト・フレームを縦横に分割して並べる",
   "img": "images/746565487016656360.jpg",
@@ -631,6 +584,22 @@
   "id": "746565487016656360"
  },
  {
+  "createdAt": "2026-11-12T09:20:02.000Z",
+  "desc": "実際のWeb・iOSアプリの画面やフローを検索して参考にできる",
+  "img": "images/site-refero.jpg",
+  "imgH": 450,
+  "imgW": 800,
+  "kind": "site",
+  "memo": "",
+  "name": "Refero",
+  "order": 16,
+  "url": "https://refero.design/",
+  "id": "site-refero",
+  "tags": [
+   "デザイン参考"
+  ]
+ },
+ {
   "createdAt": "2026-11-12T11:10:04.000Z",
   "desc": "画像を軽く圧縮した状態で書き出せる（最大90%減）",
   "img": "images/789009980664807964.jpg",
@@ -644,6 +613,22 @@
   ],
   "url": "https://www.figma.com/community/plugin/789009980664807964",
   "id": "789009980664807964"
+ },
+ {
+  "createdAt": "2026-11-12T09:40:00.000Z",
+  "desc": "Lottieアニメを探してダウンロードできる",
+  "img": "images/site-lottie-microinteraction.jpg",
+  "imgH": 449,
+  "imgW": 800,
+  "kind": "site",
+  "memo": "",
+  "name": "LottieFiles（マイクロインタラクション）",
+  "order": 17,
+  "url": "https://lottiefiles.com/free-animations/microinteraction",
+  "id": "site-lottie-microinteraction",
+  "tags": [
+   "アニメーション"
+  ]
  },
  {
   "createdAt": "2026-11-12T11:10:05.000Z",
@@ -662,6 +647,22 @@
   "id": "1264487790204417601"
  },
  {
+  "createdAt": "2026-11-12T09:50:00.000Z",
+  "desc": "ボタンやダイアログなど定番UIコンポーネントの見た目と動きを確認できる",
+  "img": "images/site-shadcn-components.jpg",
+  "imgH": 450,
+  "imgW": 800,
+  "kind": "site",
+  "memo": "",
+  "name": "shadcn/ui（Components）",
+  "order": 18,
+  "url": "https://ui.shadcn.com/docs/components",
+  "id": "site-shadcn-components",
+  "tags": [
+   "その他参考"
+  ]
+ },
+ {
   "createdAt": "2026-11-12T11:10:06.000Z",
   "desc": "ファイルのコメントをExcelなどに書き出せる",
   "img": "images/930702747188058634.jpg",
@@ -676,6 +677,22 @@
   ],
   "url": "https://www.figma.com/community/plugin/930702747188058634",
   "id": "930702747188058634"
+ },
+ {
+  "createdAt": "2026-11-12T11:00:00.000Z",
+  "desc": "有名アプリのユーザーフローを動画で見られる",
+  "img": "images/site-unprinted-explore.jpg",
+  "imgH": 450,
+  "imgW": 800,
+  "kind": "site",
+  "memo": "",
+  "name": "unprinted（アプリデザインギャラリー）",
+  "order": 19,
+  "url": "https://www.unprinted.design/explore/",
+  "id": "site-unprinted-explore",
+  "tags": [
+   "デザイン参考"
+  ]
  },
  {
   "createdAt": "2026-11-12T11:10:07.000Z",
@@ -858,22 +875,5 @@
   ],
   "url": "https://www.figma.com/community/plugin/1234516617110372119",
   "id": "1234516617110372119"
- },
- {
-  "id": "1525834177360533451",
-  "kind": "plugin",
-  "name": "ToneCurve Color Palette Generator",
-  "desc": "カラーパレット作成できる。リアルタイムで変化が見られる",
-  "url": "https://www.figma.com/community/plugin/1525834177360533451/tonecurve-color-palette-generator",
-  "tags": [
-   "整理・効率化",
-   "カラー"
-  ],
-  "memo": "",
-  "createdAt": "2026-11-18T08:02:54.441Z",
-  "img": "images/imwlu38tlexj9.jpg",
-  "imgW": 900,
-  "imgH": 650,
-  "order": -3
  }
 ]
