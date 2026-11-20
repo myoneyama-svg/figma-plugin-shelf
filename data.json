@@ -875,5 +875,22 @@
   ],
   "url": "https://www.figma.com/community/plugin/1234516617110372119",
   "id": "1234516617110372119"
+ },
+ {
+  "id": "imwoiukfsdxpp",
+  "kind": "site",
+  "name": "Interference Ribbons | React Bits Pro",
+  "desc": "AI用モーション参考サイト",
+  "url": "https://pro.reactbits.dev/docs/components/interference-ribbons",
+  "tags": [
+   "その他参考",
+   "アニメーション"
+  ],
+  "memo": "",
+  "createdAt": "2026-11-20T05:11:30.504Z",
+  "img": "images/imwoiuj0ouxst.jpg",
+  "imgW": 900,
+  "imgH": 650,
+  "order": -1
  }
 ]
